@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>ABSENSI</title>
 
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
@@ -64,15 +64,15 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        {{-- <div class="col-sm-6">
                             <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
+                        </div><!-- /.col --> --}}
+                        {{-- <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard v1</li>
                             </ol>
-                        </div><!-- /.col -->
+                        </div><!-- /.col --> --}}
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
@@ -84,18 +84,34 @@
                 <!-- Wadah Content-->
                 <div class="container-fluid">
                     @yield('content')
-                </div>
-                <!-- Akhir Wadah Content -->
+                    {{-- <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>New Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> --}}
+                    <!-- ./col -->
+
+                    <!-- Akhir Wadah Content -->
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            {{-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.2.0
-            </div>
+            </div> --}}
         </footer>
 
         <!-- Control Sidebar -->

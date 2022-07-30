@@ -6,8 +6,8 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header">
-                        Data Pegawai
+                    <div class="card-header"  style="background-color: grey">
+                        Data Laporan
                         <a href="{{ route('data.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>

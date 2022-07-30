@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Jabatan extends Model
 {
     use HasFactory;
-    // membuat fitur created_at(kapan data dibuat) & updated_at (kapan data diedit)
-    // aktif
-    public $timestamps = true;
     public function absensi()
     {
         // data dari model 'siswa' bisa memiliki 1 data

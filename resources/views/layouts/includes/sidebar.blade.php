@@ -1,10 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
+    {{-- <a href="index3.html" class="brand-link">
+      
+       
+    </a> --}}
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -50,9 +49,9 @@
                 <li class="nav-item">
                     <a href="{{ route('absensi.index') }}"
                         class="nav-link {{ Request::is('admin/absensi*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Absensi
+                            Data Absensi
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
@@ -67,13 +66,23 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('data.index') }}"
                         class="nav-link {{ Request::is('admin/data*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Data Laporan
-                            {{-- <span class="right badge badge-danger">New</span> --}}
+                            Data Laporan --}}
+                            {{-- <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('jabatan.index') }}"
+                        class="nav-link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            Jabatan
+
                         </p>
                     </a>
                 </li>
@@ -241,7 +250,7 @@
                         </li>
                     </ul> --}}
                 {{-- </li> --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -582,7 +591,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-header">MISCELLANEOUS</li>
                 <li class="nav-item">
                     <a href="iframe.html" class="nav-link">

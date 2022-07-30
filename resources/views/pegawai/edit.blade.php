@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: grey">
                         Data Pegaawai
                     </div>
                     <div class="card-body">

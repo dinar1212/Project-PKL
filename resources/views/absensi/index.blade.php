@@ -6,8 +6,8 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header">
-                        Data Pegawai
+                    <div class="card-header bg-dark"  >
+                        Data Absensi
                         <a href="{{ route('absensi.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
@@ -21,7 +21,7 @@
                                         <th>No</th>
                                         <th>Nama Pegawai</th>
                                         <th>Tanggal</th>
-                                        {{-- <th>Jam Masuk</th> --}}
+                                        <th>Jam Masuk</th>
                                         <th>Jabatan</th>
                                         <th>Status</th>
                                         <th>Keterangan</th>
@@ -33,10 +33,10 @@
                                     @foreach ($absensi as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->nama_pegawai }}</td>
+                                            <td>{{ $data->pegawai->nama_pegawai }}</td>
                                             <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
                                             <td>{{ $data->jam_masuk }}</td>
-                                            <td>{{ $data->jabatan }}</td>
+                                            <td>{{ $data->jabatan->jabatan }}</td>
                                             <td>{{ $data->status }}</td>
                                             <td>{{ $data->keterangan }}</td>
 
@@ -52,9 +52,10 @@
                                                         Edit
                                                     </a> |
                                                     <a href="{{ route('absensi.show', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-warning">
-                                                        Show
-                                                    </a> |
+                                                    class="btn btn-sm btn-outline-warning">
+                                                    Show
+                                                </a> |
+                                                   
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
                                                         onclick="return confirm('Apakah Anda Yakin?')">Delete
                                                     </button>

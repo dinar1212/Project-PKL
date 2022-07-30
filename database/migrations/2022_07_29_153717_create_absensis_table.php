@@ -19,11 +19,16 @@ class CreateAbsensisTable extends Migration
 // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
             $table->foreign('id_pegawai')->references('id')->on('pegawais')->onDelete('CASCADE');
 
+            $table->unsignedBigInteger('id_jabatan');
+// membuat fk id_siswa yang mengacu kpd field id di tabel siswas
+            $table->foreign('id_jabatan')->references('id')->on('jabatans')->onDelete('CASCADE');
+
             $table->String('tanggal');
 
-            $table->time('jam_masuk');
+            $table->String('jam_masuk');
 
             $table->String('status');
+            $table->String('keterangan');
 
             $table->timestamps();
         });

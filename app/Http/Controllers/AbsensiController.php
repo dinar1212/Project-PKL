@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\Jabatan;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class AbsensiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
     /**
      * Display a listing of the resource.
@@ -18,9 +20,12 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi = Absensi::all();
-        $active = 'absensi';
-        return view('absensi.index', compact('absensi', 'active'));
+        $absensi = Absensi::with('jabatan')->get();
+        $absensi = Absensi::with('pegawai')->get();
+// dd($absensi);
+        // return $absensi;
+        return view('absensi.index', ['absensi' => $absensi]);
+
     }
 
     /**
@@ -30,8 +35,10 @@ class AbsensiController extends Controller
      */
     public function create()
     {
-        //
-        return view('absensi.create');
+        $jabatan = Jabatan::all();
+        $pegawai = Pegawai::all();
+        return view('absensi.create', compact('jabatan', 'pegawai'));
+
     }
 
     /**
@@ -42,36 +49,37 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $validated = $request->validate([
-        //     'nama' => 'required',
-        //     'nis' => 'required|unique:siswas|max:255',
-        //     'jenis_kelamin' => 'required',
-        //     'agama' => 'required',
-        //     'tgl_lahir' => 'required',
-        //     'alamat' => 'required',
-        // ]);
-        // $absensi = new Absensi();
-        // $absensi->nama = $request->nama;
-        // $absensi->nis = $request->nis;
-        // $absensi->jenis_kelamin = $request->jenis_kelamin;
-        // $absensi->agama = $request->agama;
-        // $absensi->tgl_lahir = $request->tgl_lahir;
-        // $absensi->alamat = $request->alamat;
-        // $absensi->save();
-        // return redirect()->route('absensi.index')
-        //     ->with('success', 'Data berhasil dibuat!');
+        $validated = $request->validate([
+            'id_pegawai' => 'required',
+            'id_jabatan' => 'required',
+            'tanggal' => 'required',
+            'jam_masuk' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+        ]);
+        $absensi = new Absensi();
+        $absensi->id_pegawai = $request->id_pegawai;
+        $absensi->id_jabatan = $request->id_jabatan;
+        $absensi->tanggal = $request->tanggal;
+        $absensi->jam_masuk = $request->jam_masuk;
+        $absensi->status = $request->status;
+        $absensi->keterangan = $request->keterangan;
+
+        $absensi->save();
+        return redirect()->route('absensi.index')
+            ->with('success', 'Data berhasil dibuat!');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Absensi  $absensi
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        // $absensi = Absensi::findOrFail($id);
         $absensi = Absensi::findOrFail($id);
         return view('absensi.show', compact('absensi'));
 
@@ -80,14 +88,15 @@ class AbsensiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Absensi  $absensi
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
         $absensi = Absensi::findOrFail($id);
-        return view('absensi.edit', compact('absensi'));
+        $pegawai = Pegawai::all();
+        $jabatan = Jabatan::all();
+        return view('absensi.edit', compact('absensi', 'pegawai', 'jabatan'));
 
     }
 
@@ -95,49 +104,46 @@ class AbsensiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Absensi  $absensi
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
-        // $validated = $request->validate([
+        $validated = $request->validate([
+            'id_pegawai' => 'required',
+            'id_jabatan' => 'required',
+            'tanggal' => 'required',
+            'jam_masuk' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+        ]);
+        $absensi = new Absensi();
+        $absensi->id_absensi = $request->id_absensi;
+        $absensi->id_jabatan = $request->id_jabatan;
+        $absensi->tanggal = $request->tanggal;
+        $absensi->jam_masuk = $request->jam_masuk;
+        $absensi->status = $request->status;
+        $absensi->keterangan = $request->keterangan;
 
-        //     'nama' => 'required',
-        //     'nis' => 'required|unique:siswas|max:255',
-        //     'jenis_kelamin' => 'required',
-        //     'agama' => 'required',
-        //     'tgl_lahir' => 'required',
-        //     'alamat' => 'required',
-
-        // ]);
-
-        // $absensi = Absensi::findOrFail($id);
-        // $absensi->nama = $request->nama;
-        // $absensi->nis = $request->nis;
-        // $absensi->jenis_kelamin = $request->jenis_kelamin;
-        // $absensi->agama = $request->agama;
-        // $absensi->tgl_lahir = $request->tgl_lahir;
-        // $absensi->alamat = $request->alamat;
-        // $absensi->save();
-        // return redirect()->route('absensi.index')
-        //     ->with('success', 'Data berhasil diedit!');
+        $absensi->save();
+        return redirect()->route('absensi.index')
+            ->with('success', 'Data berhasil dibuat!');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Absensi  $absensi
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
         $absensi = Absensi::findOrFail($id);
+        $absensi->deleteImage();
         $absensi->delete();
         return redirect()->route('absensi.index')
-            ->with('success', 'Data bBerhasil Dihapus!');
+            ->with('success', 'Data berhasil dibuat!');
 
     }
 }

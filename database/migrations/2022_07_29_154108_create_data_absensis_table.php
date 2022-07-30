@@ -19,7 +19,7 @@ class CreateDataAbsensisTable extends Migration
 // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
             $table->foreign('id_absensi')->references('id')->on('absensis')->onDelete('CASCADE');
             $table->String('status');
-
+            $table->String('keterangan');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateDataAbsensisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data__absensis');
+        Schema::dropIfExists('data_absensis');
     }
 }

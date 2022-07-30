@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header"  style="background-color: grey">
                         Data Pegawai
                     </div>
                     <div class="card-body">
@@ -63,29 +63,24 @@
                                     </span>
                                 @enderror
                             </div>
+
                             {{-- <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
-                                <select class="form-select @error('jabatan') is-invalid @enderror" name="jabatan">
-                                    <option selected>Pilih Jabatan</option>
-                                    <option value="Direktur">Direktur</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="HRD">HRD</option>
-                                    <option value="Karywan">Karywan</option>
-                                    <option value="OB">OB</option>
-
-                                </select>
-                                @error('agama')
+                                <input type="text" class="form-control  @error('jabatan') is-invalid @enderror"
+                                    name="jabatan">
+                                @error('jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div> --}}
+                           
                             <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
                                 <select name="id_jabatan" class="form-control @error('id_jabatan') is-invalid @enderror"
                                     id="">
                                     @foreach ($jabatan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                        <option value="{{ $data->id }}">{{ $data->jabatan }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_jabatan')
