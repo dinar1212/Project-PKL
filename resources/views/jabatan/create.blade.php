@@ -6,10 +6,10 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header"  style="background-color: grey">
+                    <div class="card-header bg-primary">
                         Data Jabatan
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <form action="{{ route('jabatan.store') }}" method="post">
                             @csrf
                             <div class="mb-3">

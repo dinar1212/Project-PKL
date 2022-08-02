@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -6,16 +6,16 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header"  style="background-color: grey">
+                    <div class="card-header bg-primary">
                         Data Jabatan
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-darl">
                         <form action="{{ route('jabatan.update', $jabatan->id) }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
                                 <input type="text" class="form-control  @error('jabatan') is-invalid @enderror"
-                                    name="jabatan">
+                                    name="jabatan" value="{{ $jabatan->jabatan }} ">
                                 @error('jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

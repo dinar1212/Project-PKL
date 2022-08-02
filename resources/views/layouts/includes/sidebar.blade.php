@@ -37,8 +37,9 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="{{ url('admin') }}" class="nav-link {{ Request::is('admin') ? ' active' : '' }}">
+                <li class="nav-item">
+                    <a href="{{ route('dasbor.index') }}"
+                        class="nav-link {{ Request::is('admin/dasbor*') ? ' active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -72,7 +73,7 @@
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Data Laporan --}}
-                            {{-- <span class="right badge badge-danger">New</span>
+                {{-- <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
                 </li> --}}

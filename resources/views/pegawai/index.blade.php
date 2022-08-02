@@ -6,15 +6,15 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header bg-dark">
+                    <div class="card-header bg-primary">
                         Data Pegawai
                         <a href="{{ route('pegawai.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
 
-                    <div class="card-body btn btn-primary">
-                        <div class="table btn btn-dark">
+                    <div class="card-body btn btn-dark">
+                        <div class="table">
                             <table class="table align-middle" id="dataTable" border="1">
                                 <thead>
                                     <tr>
@@ -50,9 +50,9 @@
                                                         Edit
                                                     </a> |
                                                     <a href="{{ route('pegawai.show', $data->id) }}"
-                                                    class="btn btn-sm btn-outline-warning">
-                                                    Show
-                                                </a> |
+                                                        class="btn btn-sm btn-outline-warning">
+                                                        Show
+                                                    </a> |
 
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
                                                         onclick="return confirm('Apakah Anda Yakin?')">Delete

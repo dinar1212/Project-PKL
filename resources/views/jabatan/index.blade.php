@@ -6,16 +6,16 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header"  style="background-color: grey">
+                    <div class="card-header bg-primary">
                         Data Jabatan
-                        <a href="{{ route('jabatan.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        <a href="{{ route('jabatan.create') }}" class="btn btn-sm btn-success" style="float: right">
                             Tambah Data
                         </a>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <div class="table-responsive" >
-                            <table class="table align-middle" id="dataTable">
+                            <table class="table align-middle" id="dataTable" border="1">
                                 <thead>
                                     <tr>
                                         <th>No</th>

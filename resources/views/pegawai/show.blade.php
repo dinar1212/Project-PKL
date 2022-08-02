@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary">
                         Data Pegawai
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <div class="mb-3">
                             <label class="form-label">Nama Pegawai</label>
                             <input type="text" class="form-control" name="nama_pegawai" value="{{ $pegawai->nama_pegawai }}" readonly>
@@ -27,7 +27,7 @@
                         </div>
                          <div class="mb-3">
                             <label class="form-label">Jabatan</label>
-                            <input type="text" class="form-control" name="id_jabatan" value="{{ $pegawai->id_jabatan }}" readonly>
+                            <input type="text" class="form-control" name="id_jabatan" value="{{ $pegawai->jabatan->jabatan }}" readonly>
                         </div>
                         <div class="mb-3">
                             <div class="d-grid gap-2">

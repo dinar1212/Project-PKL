@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -6,10 +6,10 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header" style="background-color: grey">
+                    <div class="card-header bg-primary">
                         Data Pegaawai
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <form action="{{ route('pegawai.update', $pegawai->id) }}" method="post">
                             @csrf
                             <div class="mb-3">
@@ -81,10 +81,15 @@
                                     </span>
                                 @enderror
                             </div> --}}
+                            
                             <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
-                                <input type="text" class="form-control  @error('id_jabatan') is-invalid @enderror"
-                                    name="id_jabatan" value="{{ $pegawai->id_jabatan }} ">
+                                <select name="id_jabatan" class="form-control @error('id_jabatan') is-invalid @enderror"
+                                    id="">
+                                    @foreach ($jabatan as $data)
+                                        <option value="{{ $data->id }}">{{ $data->jabatan }}</option>
+                                    @endforeach
+                                </select>
                                 @error('id_jabatan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

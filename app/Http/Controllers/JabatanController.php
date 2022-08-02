@@ -63,7 +63,7 @@ class JabatanController extends Controller
      */
     public function show(Jabatan $jabatan)
     {
-        $jabatan = Jabatan::findOrFail($id);
+        // $jabatan = Jabatan::findOrFail($id);
         return view('jabatan.show', compact('jabatan'));
 
     }
@@ -76,7 +76,7 @@ class JabatanController extends Controller
      */
     public function edit(Jabatan $jabatan)
     {
-        $jabatan = Jabatan::findOrFail($id);
+        // $jabatan = Jabatan::findOrFail($id);
         return view('jabatan.edit', compact('jabatan'));
 
     }
@@ -88,7 +88,7 @@ class JabatanController extends Controller
      * @param  \App\Models\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jabatan $jabatan)
+    public function update(Request $request)
     {
         $validated = $request->validate([
             'jabatan' => 'required',
@@ -98,7 +98,7 @@ class JabatanController extends Controller
         $jabatan->jabatan = $request->jabatan;
         $jabatan->save();
         return redirect()->route('jabatan.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Data berhasil diedit!');
 
     }
 
@@ -110,7 +110,7 @@ class JabatanController extends Controller
      */
     public function destroy(Jabatan $jabatan)
     {
-        $jabatan = Jabatan::findOrFail($id);
+        // $jabatan = Jabatan::findOrFail($id);
         $jabatan->delete();
         return redirect()->route('jabatan.index')
             ->with('success', 'Data Berhasil Dihapus!');

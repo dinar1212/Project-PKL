@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\DataAbsensiController;
+use App\Http\Controllers\DasborController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     });
     Route::resource('absensi', AbsensiController::class);
     Route::resource('pegawai', PegawaiController::class);
-    Route::resource('data', DataAbsensiController::class);
+    Route::resource('dasbor', DasborController::class);
     Route::resource('jabatan', JabatanController::class);
 });

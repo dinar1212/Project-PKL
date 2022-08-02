@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -6,10 +6,10 @@
             <div class="col-md-12">
                 @include('layouts/flash')
                 <div class="card">
-                    <div class="card-header" style="background-color: grey">
-                        Data Pegaawai
+                    <div class="card-header  bg-primary">
+                        Data Absensi
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <form action="{{ route('absensi.update', $absensi->id) }}" method="post">
                             @csrf
                             @method('put')
