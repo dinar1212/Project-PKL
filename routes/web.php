@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DasborController;
+use App\Http\Controllers\AbsensiUserController;
+use App\Http\Controllers\AbsenController;
+
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +21,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -33,4 +36,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('dasbor', DasborController::class);
     Route::resource('jabatan', JabatanController::class);
+    Route::resource('absen', AbsenController::class);
+    
+
+    $active = 'home';
+    return view('user.index', compact('active'));
+    Route::resource('absen', AbsenController::class);
+
+
 });
+Route::resource('absensiUser', AbsensiUserController::class);
+
+
+Route::get('/absen', [AbsenController::class, 'index']);

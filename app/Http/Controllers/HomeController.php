@@ -31,12 +31,13 @@ class HomeController extends Controller
 
     protected function adminDashboard()
     {
-        return view('admin.index');
+        return view('dasbor.index');
     }
 
     protected function memberDashboard()
     {
-        return view('home');
+        return view('
+        home');
     }
 
 }

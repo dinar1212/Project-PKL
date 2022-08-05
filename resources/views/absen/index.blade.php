@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
 @section('content')
     <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header bg-primary">
                         Data Absensi
-                        <a href="{{ route('absensi.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        <a href="{{ route('absen.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -30,26 +30,25 @@
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($absensi as $data)
+                                    @foreach ($absen as $bebas)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->pegawai->nama_pegawai }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
-                                            <td>{{ $data->jam_masuk }}</td>
-                                            <td>{{ $data->jabatan->jabatan }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>{{ $data->keterangan }}</td>
+                                            <td>{{ $bebas->pegawai->nama_pegawai }}</td>
+                                            <td>{{ date('d M Y', strtotime($bebas->tanggal)) }}</td>
+                                            <td>{{ $bebas->jam_masuk }}</td>
+                                            <td>{{ $bebas->jabatan->jabatan }}</td>
+                                            <td>{{ $bebas->status }}</td>
+                                            <td>{{ $bebas->keterangan }}</td>
 
-                                            {{-- <td>{{ $data->agama }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
-                                            <td>{{ $data->alamat }}</td> --}}
+                                            {{-- <td>{{ $bebas->agama }}</td>
+                                            <td>{{ date('d M Y', strtotime($bebas->tgl_lahir)) }}</td>
+                                            <td>{{ $bebas->alamat }}</td> --}}
                                             {{-- <fieldset> --}}
-                                                
-                                                   
-                                                    {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
 
-{{-- 
-                                                    @php
+
+                                            {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
+
+                                            {{-- @php
                                                         $keterangan;
                                                         if ($jam_masuk <= 0800) {
                                                             $keterangan = 'A';
@@ -67,14 +66,14 @@
 
 
                                             <td>
-                                                <form action="{{ route('absensi.destroy', $data->id) }}" method="post">
+                                                <form action="{{ route('absen.destroy', $bebas->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('absensi.edit', $data->id) }}"
+                                                    <a href="{{ route('absen.edit', $bebas->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
                                                     </a> |
-                                                    <a href="{{ route('absensi.show', $data->id) }}"
+                                                    <a href="{{ route('absen.show', $bebas->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
                                                     </a> |

@@ -64,7 +64,7 @@ class PegawaiController extends Controller
         // return redirect()->route('pegawai.index')
         //     ->with('success', 'Data berhasil dibuat!');
         $validated = $request->validate([
-            'id_pegawai' => 'required',
+            'nama_pegawai' => 'required',
             'id_jabatan' => 'required',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
@@ -72,7 +72,7 @@ class PegawaiController extends Controller
         ]);
 
         $pegawai = new Pegawai();
-        $pegawai->id_pegawai = $request->id_pegawai;
+        $pegawai->nama_pegawai = $request->nama_pegawai;
         $pegawai->id_jabatan = $request->id_jabatan;
         $pegawai->tgl_lahir = $request->tgl_lahir;
         $pegawai->jenis_kelamin = $request->jenis_kelamin;

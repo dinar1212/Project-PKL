@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Absensi;
+use App\Models\Absen;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
-class AbsensiController extends Controller
+class AbsenController extends Controller
 {
     public function __construct()
     {
@@ -20,11 +20,11 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi = Absensi::with('jabatan')->get();
-        $absensi = Absensi::with('pegawai')->get();
-// dd($absensi);
-        // return $absensi;
-        return view('absensi.index', ['absensi' => $absensi]);
+        $absen = Absen::with('jabatan','pegawai')->get();
+        
+// dd($absen);
+        // return $absen;
+        return view('absen.index', ['absen' => $absen]);
         
 
     }
@@ -38,7 +38,7 @@ class AbsensiController extends Controller
     {
         $jabatan = Jabatan::all();
         $pegawai = Pegawai::all();
-        return view('absensi.create', compact('jabatan', 'pegawai'));
+        return view('absen.create', compact('jabatan', 'pegawai'));
 
     }
 
@@ -60,16 +60,16 @@ class AbsensiController extends Controller
             'status' => 'required',
             'keterangan' => 'required',
         ]);
-        $absensi = new Absensi();
-        $absensi->id_pegawai = $request->id_pegawai;
-        $absensi->id_jabatan = $request->id_jabatan;
-        $absensi->tanggal = date('Y-m-d');
-        $absensi->jam_masuk = date('h:i:s');
-        $absensi->status = $request->status;
-        $absensi->keterangan = $request->keterangan;
+        $absen = new Absen();
+        $absen->id_pegawai = $request->id_pegawai;
+        $absen->id_jabatan = $request->id_jabatan;
+        $absen->tanggal = date('Y-m-d');
+        $absen->jam_masuk = date('h:i:s');
+        $absen->status = $request->status;
+        $absen->keterangan = $request->keterangan;
 
-        $absensi->save();
-        return redirect()->route('absensi.index')
+        $absen->save();
+        return redirect()->route('absen.index')
             ->with('success', 'Data berhasil dibuat!');
 
     }
@@ -77,29 +77,29 @@ class AbsensiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Absensi  $absensi
+     * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // $absensi = Absensi::findOrFail($id);
-        $absensi = Absensi::findOrFail($id);
-        return view('absensi.show', compact('absensi'));
+        // $absen = Absen::findOrFail($id);
+        $absen = Absen::findOrFail($id);
+        return view('absen.show', compact('absen'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Absensi  $absensi
+     * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $absensi = Absensi::findOrFail($id);
+        $absen = Absen::findOrFail($id);
         $pegawai = Pegawai::all();
         $jabatan = Jabatan::all();
-        return view('absensi.edit', compact('absensi', 'pegawai', 'jabatan'));
+        return view('absen.edit', compact('absen', 'pegawai', 'jabatan'));
 
     }
 
@@ -107,7 +107,7 @@ class AbsensiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Absensi  $absensi
+     * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -120,16 +120,16 @@ class AbsensiController extends Controller
             'status' => 'required',
             'keterangan' => 'required',
         ]);
-        $absensi = new Absensi();
-        $absensi->id_absensi = $request->id_absensi;
-        $absensi->id_jabatan = $request->id_jabatan;
-        $absensi->tanggal = $request->tanggal;
-        $absensi->jam_masuk = $request->jam_masuk;
-        $absensi->status = $request->status;
-        $absensi->keterangan = $request->keterangan;
+        $absen = new Absen();
+        $absen->id_pegawai = $request->id_pegawai;
+        $absen->id_jabatan = $request->id_jabatan;
+        $absen->tanggal = $request->tanggal;
+        $absen->jam_masuk = $request->jam_masuk;
+        $absen->status = $request->status;
+        $absen->keterangan = $request->keterangan;
 
-        $absensi->save();
-        return redirect()->route('absensi.index')
+        $absen->save();
+        return redirect()->route('absen.index')
             ->with('success', 'Data berhasil dibuat!');
 
     }
@@ -137,15 +137,15 @@ class AbsensiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Absensi  $absensi
+     * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $absensi = Absensi::findOrFail($id);
-        $absensi->deleteImage();
-        $absensi->delete();
-        return redirect()->route('absensi.index')
+        $absen = Absen::findOrFail($id);
+        $absen->deleteImage();
+        $absen->delete();
+        return redirect()->route('absen.index')
             ->with('success', 'Data berhasil dibuat!');
 
     }

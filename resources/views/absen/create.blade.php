@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
 @section('content')
     <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header bg-primary" >Data Absensi </div>
                         <div class="card-body bg-dark">
-                            <form action="{{ route('absensi.store') }}" method="post">
+                            <form action="{{ route('absen.store') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label">Nama Pegawai</label>

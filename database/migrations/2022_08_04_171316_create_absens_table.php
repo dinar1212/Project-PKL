@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbsensisTable extends Migration
+class CreateAbsensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAbsensisTable extends Migration
      */
     public function up()
     {
-        Schema::create('absensis', function (Blueprint $table) {
+        Schema::create('absens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pegawai');
 // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
@@ -26,6 +26,7 @@ class CreateAbsensisTable extends Migration
             $table->time('jam_masuk');
             $table->String('status');
             $table->String('keterangan');
+
             $table->timestamps();
         });
     }
@@ -37,6 +38,6 @@ class CreateAbsensisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absensis');
+        Schema::dropIfExists('absens');
     }
 }
