@@ -15,9 +15,12 @@ class CreateAbsensTable extends Migration
     {
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
+            $table->foreign('id_absensi')->references('id')->on('absensi')->onDelete('CASCADE');
+
             $table->unsignedBigInteger('id_pegawai');
 // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
             $table->foreign('id_pegawai')->references('id')->on('pegawais')->onDelete('CASCADE');
+           
 
             $table->unsignedBigInteger('id_jabatan');
 // membuat fk id_siswa yang mengacu kpd field id di tabel siswas

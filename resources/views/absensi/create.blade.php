@@ -1,14 +1,28 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
 @section('content')
+<section id="hero" class="">
+        
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('asset/img/hero-img.png') }}" class="" alt="">
+
+                    
+                </div>
+                
+            </div>
+        </div>
+
+       
+    </section>  
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @include('layouts/flash')
+                <br>
                 <div class="card">
-                    <div class="card-header bg-primary" >Data Absensi </div>
-                        <div class="card-body bg-dark">
-                            <form action="{{ route('absensi.store') }}" method="post">
+                    <div class="card-header" style="background-color: rgb(53, 88, 121)" >Data Absensi </div>
+                        <div class="card-body ">
+                            <form action="{{ route('absensi.index') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label">Nama Pegawai</label>
@@ -79,7 +93,7 @@
                             </div> --}}
                                 <div class="mb-3">
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-primary" type="submit">Save</button>
+                                        <button class="btn btn-info" type="submit">Save</button>
                                     </div>
                                 </div>
                             </form>
@@ -89,3 +103,6 @@
             </div>
         </div>
     @endsection
+
+
+    

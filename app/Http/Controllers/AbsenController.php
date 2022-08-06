@@ -70,7 +70,7 @@ class AbsenController extends Controller
 
         $absen->save();
         return redirect()->route('absen.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Absensi Berhasil!');
 
     }
 
@@ -143,10 +143,9 @@ class AbsenController extends Controller
     public function destroy($id)
     {
         $absen = Absen::findOrFail($id);
-        $absen->deleteImage();
         $absen->delete();
         return redirect()->route('absen.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Data berhasil didelet!');
 
     }
 }

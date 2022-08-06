@@ -1,5 +1,18 @@
 @extends('layouts.user')
 
+<section id="hero" class="">
+        
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('asset/img/hero-img.png') }}" class="" alt="">
+
+                    
+                </div>
+                
+            </div>
+        </div>
+
+       
+    </section>  
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -13,7 +26,7 @@
                         </a>
                     </div>
 
-                    <div class="card-body bg-dark">
+                    <div class="card-body ">
                         <div class="table-responsive">
                             <table class="table align-middle" id="dataTable" border="1">
                                 <thead>
@@ -30,50 +43,39 @@
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($absen as $bebas)
+                                    @foreach ($absen as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $bebas->pegawai->nama_pegawai }}</td>
-                                            <td>{{ date('d M Y', strtotime($bebas->tanggal)) }}</td>
-                                            <td>{{ $bebas->jam_masuk }}</td>
-                                            <td>{{ $bebas->jabatan->jabatan }}</td>
-                                            <td>{{ $bebas->status }}</td>
-                                            <td>{{ $bebas->keterangan }}</td>
+                                            <td>{{ $data->pegawai->nama_pegawai }}</td>
+                                            <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
+                                            <td>{{ $data->jam_masuk }}</td>
+                                            <td>{{ $data->jabatan->jabatan }}</td>
+                                            <td>{{ $data->status }}</td>
+                                            <td>{{ $data->keterangan }}</td>
 
-                                            {{-- <td>{{ $bebas->agama }}</td>
-                                            <td>{{ date('d M Y', strtotime($bebas->tgl_lahir)) }}</td>
-                                            <td>{{ $bebas->alamat }}</td> --}}
+                                            {{-- <td>{{ $data->agama }}</td>
+                                            <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
+                                            <td>{{ $data->alamat }}</td> --}}
                                             {{-- <fieldset> --}}
+                                                
+                                                   
+                                                    {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
 
 
-                                            {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
+ 
+               
 
-                                            {{-- @php
-                                                        $keterangan;
-                                                        if ($jam_masuk <= 0800) {
-                                                            $keterangan = 'A';
-                                                        } elseif ($jam_masuk >= 0800)) {
-                                                            $keterangan = 'B';
-                                                        } else {
-                                                            $keterangan = 0;
-                                                        }
-                                                    @endphp
-                                                    <br>
-                                                    Keterangan : {{ $keterangan }} <br>
-                                                    <hr>
-                                                @endforeach --}}
-
-
+                
 
                                             <td>
-                                                <form action="{{ route('absen.destroy', $bebas->id) }}" method="post">
+                                                <form action="{{ route('absensi.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('absen.edit', $bebas->id) }}"
+                                                    <a href="{{ route('absensi.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
                                                     </a> |
-                                                    <a href="{{ route('absen.show', $bebas->id) }}"
+                                                    <a href="{{ route('absensi.show', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
                                                     </a> |

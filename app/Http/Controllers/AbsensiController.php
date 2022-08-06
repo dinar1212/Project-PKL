@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\Absen;
+
 use App\Models\Jabatan;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
@@ -20,12 +22,12 @@ class AbsensiController extends Controller
      */
     public function index()
     {
+         $absen = Absen::all();
         $absensi = Absensi::with('jabatan')->get();
         $absensi = Absensi::with('pegawai')->get();
 // dd($absensi);
         // return $absensi;
         return view('absensi.index', ['absensi' => $absensi]);
-        
 
     }
 
@@ -50,9 +52,7 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        date_default_timezone_set('Asia/Jakarta'); 
- 
-
+        date_default_timezone_set('Asia/Jakarta');
 
         $validated = $request->validate([
             'id_pegawai' => 'required',
@@ -69,7 +69,7 @@ class AbsensiController extends Controller
         $absensi->keterangan = $request->keterangan;
 
         $absensi->save();
-        return redirect()->route('absensi.index')
+        return redirect()->route('absen.index')
             ->with('success', 'Data berhasil dibuat!');
 
     }
@@ -143,10 +143,9 @@ class AbsensiController extends Controller
     public function destroy($id)
     {
         $absensi = Absensi::findOrFail($id);
-        $absensi->deleteImage();
         $absensi->delete();
         return redirect()->route('absensi.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Data berhasil hapus!');
 
     }
 }

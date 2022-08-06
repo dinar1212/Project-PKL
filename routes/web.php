@@ -41,11 +41,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     $active = 'home';
     return view('user.index', compact('active'));
-    Route::resource('absen', AbsenController::class);
+   
 
 
 });
-Route::resource('absensiUser', AbsensiUserController::class);
 
 
-Route::get('/absen', [AbsenController::class, 'index']);
+
+Route::get('/absensi', [AbsensiController::class, 'create']);
+Route::get('/laporan', [AbsenController::class, 'index']);

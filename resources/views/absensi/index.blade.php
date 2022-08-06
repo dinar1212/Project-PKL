@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -48,23 +49,11 @@
                                                    
                                                     {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
 
-{{-- 
-                                                    @php
-                                                        $keterangan;
-                                                        if ($jam_masuk <= 0800) {
-                                                            $keterangan = 'A';
-                                                        } elseif ($jam_masuk >= 0800)) {
-                                                            $keterangan = 'B';
-                                                        } else {
-                                                            $keterangan = 0;
-                                                        }
-                                                    @endphp
-                                                    <br>
-                                                    Keterangan : {{ $keterangan }} <br>
-                                                    <hr>
-                                                @endforeach --}}
 
+ 
+               
 
+                
 
                                             <td>
                                                 <form action="{{ route('absensi.destroy', $data->id) }}" method="post">
