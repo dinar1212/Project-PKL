@@ -1,98 +1,77 @@
 @extends('layouts.user')
 
 <section id="hero" class="">
-        
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('asset/img/hero-img.png') }}" class="" alt="">
 
-                    
-                </div>
-                
-            </div>
-        </div>
+    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+        <img src="{{ asset('asset/img/hero-img.png') }}" class="" alt="">
 
-       
-    </section>  
+
+    </div>
+
+    </div>
+    </div>
+
+
+</section>
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @include('layouts/flash')
-                <div class="card">
-                    <div class="card-header bg-primary">
-                        Data Absensi
-                        <a href="{{ route('absen.create') }}" class="btn btn-sm btn-primary" style="float: right">
-                            Tambah Data
-                        </a>
-                    </div>
 
-                    <div class="card-body ">
-                        <div class="table-responsive">
-                            <table class="table align-middle" id="dataTable" border="1">
-                                <thead>
+                <div class="card-body ">
+                    <div class="table-responsive">
+                        <table class="table align-middle" id="dataTable" border="1">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Pegawai</th>
+                                    <th>Tanggal</th>
+                                    <th>Jam Masuk</th>
+                                    <th>Jabatan</th>
+                                    <th>Status</th>
+                                    <th>Keterangan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $no = 1; @endphp
+                                @foreach ($absen as $data)
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Pegawai</th>
-                                        <th>Tanggal</th>
-                                        <th>Jam Masuk</th>
-                                        <th>Jabatan</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach ($absen as $data)
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
-                                            <td>{{ $data->pegawai->nama_pegawai }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
-                                            <td>{{ $data->jam_masuk }}</td>
-                                            <td>{{ $data->jabatan->jabatan }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>{{ $data->keterangan }}</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $data->pegawai->nama_pegawai }}</td>
+                                        <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
+                                        <td>{{ $data->jam_masuk }}</td>
+                                        <td>{{ $data->jabatan->jabatan }}</td>
+                                        <td>{{ $data->status }}</td>
+                                        <td>{{ $data->keterangan }}</td>
 
-                                            {{-- <td>{{ $data->agama }}</td>
+                                        {{-- <td>{{ $data->agama }}</td>
                                             <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
                                             <td>{{ $data->alamat }}</td> --}}
-                                            {{-- <fieldset> --}}
-                                                
-                                                   
-                                                    {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
+                                        {{-- <fieldset> --}}
 
 
- 
-               
+                                        {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
 
-                
 
-                                            <td>
-                                                <form action="{{ route('absensi.destroy', $data->id) }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <a href="{{ route('absensi.edit', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-success">
-                                                        Edit
-                                                    </a> |
-                                                    <a href="{{ route('absensi.show', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-warning">
-                                                        Show
-                                                    </a> |
 
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                        onclick="return confirm('Apakah Anda Yakin?')">Delete
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+
+
+
+
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
     </div>
 @endsection

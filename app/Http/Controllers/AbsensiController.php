@@ -69,8 +69,8 @@ class AbsensiController extends Controller
         $absensi->keterangan = $request->keterangan;
 
         $absensi->save();
-        return redirect()->route('absen.index')
-            ->with('success', 'Data berhasil dibuat!');
+        return redirect()->route('absen.index') 
+            ->with('success', 'Absen Berhasil');
 
     }
 
@@ -120,8 +120,10 @@ class AbsensiController extends Controller
             'status' => 'required',
             'keterangan' => 'required',
         ]);
-        $absensi = new Absensi();
-        $absensi->id_absensi = $request->id_absensi;
+       $absensi = Absensi::findOrFail($id);
+
+        // $absensi = new Absensi();
+        $absensi->id_pegawai = $request->id_pegawai;
         $absensi->id_jabatan = $request->id_jabatan;
         $absensi->tanggal = $request->tanggal;
         $absensi->jam_masuk = $request->jam_masuk;
@@ -130,7 +132,7 @@ class AbsensiController extends Controller
 
         $absensi->save();
         return redirect()->route('absensi.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Data berhasil diedit!');
 
     }
 

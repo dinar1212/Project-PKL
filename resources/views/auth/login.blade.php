@@ -1,40 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Absensi | Log in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-</head>
+    <link rel="stylesheet" href="{{asset('assetl/fonts/icomoon/style.css')}}">
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href=""><b>Absensi</b></a>
+    <link rel="stylesheet" href="{{asset('assetl/css/owl.carousel.min.css')}}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('assetl/css/bootstrap.min.css')}}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{{asset('assetl/css/style.css')}}">
+
+    <title>Absensi | Login</title>
+  </head>
+  <body style="background-color: rgb(75, 116, 155)">
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{asset('assetl/images/undraw_remotely_2j6y.svg')}}" alt="Image" class="img-fluid">
         </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg"></p>
-                <img src="logo-1.png" alt="">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h1 class="text-white">Silahkan Login</h1>
+              <p class="mb-4">PT.Albaqqi</p>
+            </div>
+           
+              {{-- <div class="form-group first">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username">
 
+              </div> --}}
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <div class="input-group mb-3">
+                    <div class="form-group first">
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Email">
+                            placeholder = "Email">
                         <div class="input-group-append">
-                            <div class="input-group-text">
+                            <div class="input-group">
                                 <span class="fas fa-envelope"></span>
                             </div>
                             @error('email')
@@ -44,11 +57,16 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+              {{-- <div class="form-group last mb-4">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password">
+                
+              </div> --}}
+               <div class="form-group last mb-4">
                         <input type="password" name="password"
                             class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                         <div class="input-group-append">
-                            <div class="input-group-text">
+                            <div class="input-group">
                                 <span class="fas fa-lock"></span>
                             </div>
                             @error('password')
@@ -58,52 +76,47 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                    <br>
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption text-white">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+               
+              </div>
 
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div>
-                <!-- /.social-auth-links -->
+              <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
-                <p class="mb-1">
-                    <a href="#">I forgot my password</a>
+             
+              
+               <div class="social-login">
+                     <p class="mb-0">
+                <a href="{{ url('register') }}" class="text-white"> Register </a>
                 </p>
-                <p class="mb-0">
-                    <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
-                </p>
+                {{-- <a href="#" class="facebook">
+                  <span class="icon-facebook mr-3"></span> 
+                </a>
+                <a href="#" class="twitter">
+                  <span class="icon-twitter mr-3"></span> 
+                </a>
+                <a href="#" class="google">
+                  <span class="icon-google mr-3"></span> 
+                </a> --}}
+              </div>
+            </form>
             </div>
-            <!-- /.login-card-body -->
+          </div>
+          
         </div>
+        
+      </div>
     </div>
-    <!-- /.login-box -->
+  </div>
 
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-</body>
-
+  
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

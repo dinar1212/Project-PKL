@@ -15,7 +15,7 @@
                             @method('put')
                             <div class="mb-3">
                                 <label class="form-label">Nama Pegawai</label>
-                                <select name="id_pegaawai" id=""
+                                <select name="id_pegawai" id=""
                                     class="form-control @error('nama_pegawai') is-invalid @enderror">
                                     @foreach ($pegawai as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama_pegawai }}</option>
@@ -27,7 +27,22 @@
                                     </span>
                                 @enderror
                             </div>
+                      
                             <div class="mb-3">
+                                <label class="form-label">Nama Jabatan</label>
+                                <select name="id_jabatan" id=""
+                                    class="form-control @error('id_jabatan') is-invalid @enderror">
+                                    @foreach ($jabatan as $data)
+                                        <option value="{{ $data->id }}">{{ $data->jabatan }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_pegawai')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                                  <div class="mb-3">
                                 <label class="form-label">Tanggal </label>
                                 <input type="date" class="form-control  @error('tanggal') is-invalid @enderror"
                                     name="tanggal" value="{{ $absensi->tanggal }}">
@@ -47,37 +62,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            {{-- <div class="mb-3">
-                                <label class="form-label">Jabatan</label>
-                                <select class="form-select @error('jabatan') is-invalid @enderror" name="jabatan">
-                                    <option selected>Pilih Jabatan</option>
-                                    <option value="Direktur">Direktur</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="HRD">HRD</option>
-                                    <option value="Karywan">Karywan</option>
-                                    <option value="OB">OB</option>
-
-                                </select>
-                                @error('agama')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div> --}}
-                            <div class="mb-3">
-                                <label class="form-label">Nama Pegawai</label>
-                                <select name="id_jabatan" id=""
-                                    class="form-control @error('id_jabatan') is-invalid @enderror">
-                                    @foreach ($jabatan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->jabatan }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_pegawai')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        
                             <div class="mb-3">
                                 <label class="form-label">Status</label>
                                 <input type="text" class="form-control  @error('status') is-invalid @enderror"

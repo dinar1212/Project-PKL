@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-header" style="background-color: rgb(53, 88, 121)" >Data Absensi </div>
                         <div class="card-body ">
-                            <form action="{{ route('absen.index') }}" method="post">
+                            <form action="{{ route('absensi.index') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label">Nama Pegawai</label>
@@ -81,16 +81,6 @@
                                     @enderror
                                 </div>
 
-
-                                {{-- <div class="mb-3">
-                                <label class="form-label">Jam</label>
-                                <textarea class="form-control  @error('alamat') is-invalid @enderror" name="alamat"></textarea>
-                                @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div> --}}
                                 <div class="mb-3">
                                     <div class="d-grid gap-2">
                                         <button class="btn btn-info" type="submit">Save</button>

@@ -14,15 +14,21 @@ class CreatePegawaisTable extends Migration
     public function up()
     {
         Schema::create('pegawais', function (Blueprint $table) {
+          
             $table->id();
-            $table->string('nama_pegawai');
+            $table->string('nip')->unique();
             $table->string('tgl_lahir');
+
             $table->string('jenis_kelamin');
             $table->string('alamat');
 
             $table->unsignedBigInteger('id_jabatan');
 // // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
             $table->foreign('id_jabatan')->references('id')->on('jabatans')->onDelete('CASCADE');
+
+              $table->unsignedBigInteger('user_id');
+// // membuat fk id_siswa yang mengacu kpd field id di tabel siswas
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
             $table->timestamps();
         });

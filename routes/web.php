@@ -4,6 +4,7 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DasborController;
 use App\Http\Controllers\AbsensiUserController;
 use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\AbsenPegawaiController;
 
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
@@ -36,7 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('dasbor', DasborController::class);
     Route::resource('jabatan', JabatanController::class);
-    Route::resource('absen', AbsenController::class);
+
+   
     
 
     $active = 'home';
@@ -45,8 +47,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
 });
+Route::group(['prefix' => 'member', 'middleware' => ['auth', 'role:member']], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+
+  
+
+    Route::get('absenpegawai', [AbsenPegawaiController::class, 'index'])->name('absenpegawai');
+    Route::post('absenmasuk', [AbsenPegawaiController::class, 'store'])->name('absenmasuk');
+    Route::get('absen-pegawai', [AbsenPegawaiController::class, 'indexkeluar'])->name('absen-pegawai');
+    Route::post('absenkeluar', [AbsenPegawaiController::class, 'absenkeluar'])->name('absenkeluar');
+   
+});
 
 
 
+Route::resource('absen', AbsenController::class,);
 Route::get('/absensi', [AbsensiController::class, 'create']);
-Route::get('/laporan', [AbsenController::class, 'index']);
+Route::get('/data_laporan', [AbsenController::class, 'index']);
+Route::get('/laporan', [AbsensiController::class, 'index']);

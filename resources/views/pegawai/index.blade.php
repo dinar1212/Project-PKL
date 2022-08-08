@@ -19,11 +19,14 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Nip</th>
                                         <th>Nama Pegawai</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Alamat</th>
                                         <th>Jabatan</th>
+                                        <th>Email</th>
+                                       
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -32,11 +35,14 @@
                                     @foreach ($pegawai as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->nama_pegawai }}</td>
+                                            <td>{{ $data->nip }}</td>
+                                            <td>{{ $data->user->name }}</td>
                                             <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
                                             <td>{{ $data->jenis_kelamin }}</td>
                                             <td>{{ $data->alamat }}</td>
                                             <td>{{ $data->jabatan->jabatan }}</td>
+                                            <td>{{ $data->user->email }}</td>
+                                            {{-- <td>{{ $data->user->password }}</td> --}}
 
                                             {{-- <td>{{ $data->agama }}</td>
                                             <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>

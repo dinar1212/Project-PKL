@@ -8,13 +8,14 @@
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                     data-aos="fade-up" data-aos-delay="200">
+                    <h1>Selamat Datang di Website</h1>
                     <h1>Sistem Absensi Pegawai</h1>
                     <h2>PT.Albaqqi</h2>
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                    {{-- <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a href="#about" class="btn-get-started scrollto"></a>
                         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i
                                 class="bi bi-play-circle"></i><span>Watch Video</span></a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <img src="{{ asset('asset/img/hero-img.png') }}" class="img-fluid animated" alt="">
@@ -40,17 +41,17 @@
 
                     <div class="col-lg-6">
                         <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="pic"><img src="{{ asset('asset/img/team/team-1.jpg') }}" class="img-fluid"
+                            <div class="pic"><img src="{{ asset('asset/img/team/tim 1.jpg') }}" class="img-fluid"
                                     alt=""></div>
                             <div class="member-info">
                                 <h4>Dinar Albaqqi</h4>
                                 <span>Direktur</span>
                                 <p>Kerja keras Nyaman Aman </p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                     <a href="https://twitter.com/login?lang=id"><i class="ri-twitter-fill"></i></a>
+                                    <a href="https://id-id.facebook.com/"><i class="ri-facebook-fill"></i></a>
+                                    <a href="https://www.instagram.com/?hl=id"><i class="ri-instagram-fill"></i></a>
+            
                                 </div>
                             </div>
                         </div>
@@ -58,17 +59,17 @@
 
                     <div class="col-lg-6 mt-4 mt-lg-0">
                         <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="pic"><img src="{{ asset('asset/img/team/team-2.jpg') }}"
+                            <div class="pic"><img src="{{ asset('asset/img/team/tim 2.jpg') }}"
                                     class="img-fluid" alt=""></div>
                             <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                               <h4>Dimas Ramdani</h4>
+                                <span>Manager</span>
+                                <p>Kerja keras Nyaman Aman </p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                     <a href="https://twitter.com/login?lang=id"><i class="ri-twitter-fill"></i></a>
+                                    <a href="https://id-id.facebook.com/"><i class="ri-facebook-fill"></i></a>
+                                    <a href="https://www.instagram.com/?hl=id"><i class="ri-instagram-fill"></i></a>
+            
                                 </div>
                             </div>
                         </div>
@@ -76,17 +77,17 @@
 
                     <div class="col-lg-6 mt-4">
                         <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="pic"><img src="{{ asset('asset/img/team/team-3.jpg') }}"
+                            <div class="pic"><img src="{{ asset('asset/img/team/tim 3.jpg') }}"
                                     class="img-fluid" alt=""></div>
                             <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                               <h4>Surya Dwinata</h4>
+                                <span>HRD</span>
+                                <p>Kerja keras Nyaman Aman </p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                     <a href="https://twitter.com/login?lang=id"><i class="ri-twitter-fill"></i></a>
+                                    <a href="https://id-id.facebook.com/"><i class="ri-facebook-fill"></i></a>
+                                    <a href="https://www.instagram.com/?hl=id"><i class="ri-instagram-fill"></i></a>
+            
                                 </div>
                             </div>
                         </div>
@@ -94,17 +95,17 @@
 
                     <div class="col-lg-6 mt-4">
                         <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="pic"><img src="{{ asset('asset/img/team/team-4.jpg') }}"
+                            <div class="pic"><img src="{{ asset('asset/img/team/tim 4.jpg') }}"
                                     class="img-fluid" alt=""></div>
                             <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                              <h4>Wildan M</h4>
+                                <span>Marketing</span>
+                                <p>Kerja keras Nyaman Aman </p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                     <a href="https://twitter.com/login?lang=id"><i class="ri-twitter-fill"></i></a>
+                                    <a href="https://id-id.facebook.com/"><i class="ri-facebook-fill"></i></a>
+                                    <a href="https://www.instagram.com/?hl=id"><i class="ri-instagram-fill"></i></a>
+            
                                 </div>
                             </div>
                         </div>

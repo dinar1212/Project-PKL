@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Absensi||PT.Albaqqi</title>
+    <title>Absensi | PT.Albaqqi</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -43,8 +43,9 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-
+            
             <h1 class="logo me-auto"><a href="index.html">PT.Albaqqi</a></h1>
+            
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="{{ asset('asset/img/logo.png') }}" alt="" class="img-fluid"></a>-->
 
@@ -68,7 +69,7 @@
 
             <main id="main">
                 @yield('content')
-
+               
 
 
 
@@ -91,11 +92,11 @@
                     </div> --}}
 
 
-                    <div class="footer-top ">
+                    <div class="footer ">
                         <div class="container clearfix">
                             <div class="row">
 
-                              
+
 
                             </div>
                         </div>
@@ -103,16 +104,16 @@
 
                     <div class="container footer-bottom clearfix">
                         <div class="copyright ">
-                          
-                            &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
-                            
+
+                            &copy; Copyright <strong><span>Dinar</span></strong>. Arya Saputra
+
                         </div>
                         <div class="credits">
                             <!-- All the links in the footer should remain intact. -->
                             <!-- You can delete the links only if you purchased the pro version. -->
                             <!-- Licensing information: https://bootstrapmade.com/license/ -->
                             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-                            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            {{-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> --}}
                         </div>
 
 
