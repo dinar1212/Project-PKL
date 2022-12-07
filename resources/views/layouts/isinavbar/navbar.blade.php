@@ -4,8 +4,9 @@
             <li><a class="nav-link " href="/home">Home</a></li>
             {{-- <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li> --}}
-            <li><a class="nav-link" href="{{ url('/absensi') }}">Absensi</a></li>
-            <li><a class="nav-link scrollto" href="{{ url('/data_laporan') }}">Data laporan</a></li>
+            <li><a class="nav-link" href="{{ url('/member/absenpegawai') }}">Absen Masuk</a></li>
+            <li><a class="nav-link" href="{{ url('/member/absen-pegawai') }}">Absen Keluar</a></li>
+            <li><a class="nav-link scrollto" href="{{ url('/member/data_laporan') }}">Data laporan</a></li>
 
 
 

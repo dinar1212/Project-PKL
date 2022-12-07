@@ -20,13 +20,14 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>NIP</th>
                                         <th>Nama Pegawai</th>
                                         <th>Tanggal</th>
-                                        <th>Jam Masuk</th>
                                         <th>Jabatan</th>
+                                        <th>Jam Masuk</th>
+                                         <th>Status</th>
+                                        <th>Jam Keluar</th>
                                         <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,28 +35,31 @@
                                     @foreach ($absensi as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->pegawai->nama_pegawai }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tanggal)) }}</td>
-                                            <td>{{ $data->jam_masuk }}</td>
-                                            <td>{{ $data->jabatan->jabatan }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>{{ $data->keterangan }}</td>
+                                            <td>{{ $data->user->pegawai->nip }}</td>
+                                            <td>{{ $data->user->name }}</td>
+                                            <td>{{ date($data->date) }}</td>
+                                            <td>{{ $data->user->pegawai->jabatan->jabatan }}</td>
+                                            <td>{{ $data->time_in }}</td>
+                                            <td>{{ $data->time_out }}</td>
+                                              <?php
+                                        if ($data->time_in > 07.0) {
+                                            $keterangan = 'Terlambat';
+                                        } else {
+                                            $keterangan = 'Tepat Waktu';
+                                        }
+                                        ?>
+                                        <td>{{ $keterangan }}</td>
+                                        <td>{{ $data->time_out }}</td>
+                                         <?php
+                                        if ($data->time_out > 12.0) {
+                                            $keterangan = 'Terlambat';
+                                        } else {
+                                            $keterangan = 'Tepat Waktu';
+                                        }
+                                        ?>
+                                         <td>{{ $keterangan }}</td>
 
-                                            {{-- <td>{{ $data->agama }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
-                                            <td>{{ $data->alamat }}</td> --}}
-                                            {{-- <fieldset> --}}
-                                                
-                                                   
-                                                    {{-- @php $keterangan = $total / count($isi['mata']) @endphp --}}
-
-
- 
-               
-
-                
-
-                                            <td>
+                                          <td>
                                                 <form action="{{ route('absensi.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
@@ -63,16 +67,19 @@
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
                                                     </a> |
-                                                    {{-- <a href="{{ route('absensi.show', $data->id) }}"
+                                                    <a href="{{ route('absensi.show', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
-                                                    </a> | --}}
+                                                    </a> |
 
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
                                                         onclick="return confirm('Apakah Anda Yakin?')">Delete
                                                     </button>
                                                 </form>
                                             </td>
+
+
+
                                         </tr>
                                     @endforeach
                                 </tbody>

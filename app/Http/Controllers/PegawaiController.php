@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
 use App\Models\Pegawai;
-use App\Models\User;
 use App\Models\Role;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -39,7 +38,7 @@ class PegawaiController extends Controller
     {
         $jabatan = Jabatan::all();
         $user = User::all();
-        return view('pegawai.create', compact('jabatan','user'));
+        return view('pegawai.create', compact('jabatan', 'user'));
 
     }
 
@@ -79,7 +78,7 @@ class PegawaiController extends Controller
         $pegawai->tgl_lahir = $request->tgl_lahir;
         $pegawai->jenis_kelamin = $request->jenis_kelamin;
         $pegawai->alamat = $request->alamat;
-        $pegawai-> user_id = $userPegawai->id;
+        $pegawai->user_id = $userPegawai->id;
 
         $pegawai->save();
         return redirect()->route('pegawai.index')
@@ -153,11 +152,10 @@ class PegawaiController extends Controller
      */
     public function destroy(Pegawai $pegawai)
     {
-        $pegawai = Pegawai::findOrFail($id);
-        $pegawai->deleteImage();
+        // $pegawai = Pegawai::findOrFail($id);
         $pegawai->delete();
         return redirect()->route('pegawai.index')
-            ->with('success', 'Data berhasil dibuat!');
+            ->with('success', 'Data berhasil diHapus!');
 
     }
 }

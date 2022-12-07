@@ -89,7 +89,7 @@
 
              
               
-               <div class="social-login">
+               {{-- <div class="social-login">
                      <p class="mb-0">
                 <a href="{{ url('register') }}" class="text-white"> Register </a>
                 </p>
@@ -102,7 +102,7 @@
                 <a href="#" class="google">
                   <span class="icon-google mr-3"></span> 
                 </a> --}}
-              </div>
+              </div> 
             </form>
             </div>
           </div>

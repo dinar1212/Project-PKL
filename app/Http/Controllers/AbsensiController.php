@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AbsenPegawai;
 use App\Models\Absensi;
-use App\Models\Absen;
-
 use App\Models\Jabatan;
 use App\Models\Pegawai;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AbsensiController extends Controller
@@ -20,14 +20,28 @@ class AbsensiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index2()
     {
-         $absen = Absen::all();
-        $absensi = Absensi::with('jabatan')->get();
-        $absensi = Absensi::with('pegawai')->get();
+        $absensi = AbsenPegawai::all();
+        $pegawai = Pegawai::all();
+        $jabatan = Jabatan::all();
+        $user = User::all();
+
 // dd($absensi);
         // return $absensi;
-        return view('absensi.index', ['absensi' => $absensi]);
+        return view('absensi.index2', compact('absensi', 'pegawai', 'jabatan', 'user'));
+
+    }
+    public function index()
+    {
+        $absensi = AbsenPegawai::all();
+        $pegawai = Pegawai::all();
+        $jabatan = Jabatan::all();
+        $user = User::all();
+
+// dd($absensi);
+        // return $absensi;
+        return view('absensi.index', compact('absensi', 'pegawai', 'jabatan', 'user'));
 
     }
 
@@ -69,7 +83,7 @@ class AbsensiController extends Controller
         $absensi->keterangan = $request->keterangan;
 
         $absensi->save();
-        return redirect()->route('absen.index') 
+        return redirect()->route('absen.index')
             ->with('success', 'Absen Berhasil');
 
     }
@@ -120,7 +134,7 @@ class AbsensiController extends Controller
             'status' => 'required',
             'keterangan' => 'required',
         ]);
-       $absensi = Absensi::findOrFail($id);
+        $absensi = Absensi::findOrFail($id);
 
         // $absensi = new Absensi();
         $absensi->id_pegawai = $request->id_pegawai;

@@ -48,9 +48,9 @@
                                             <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
                                             <td>{{ $data->alamat }}</td> --}}
                                             <td>
-                                                <form action="{{ route('pegawai.destroy', $data->id) }}" method="post">
+                                                {{-- <form action="{{ route('pegawai.destroy', $data->id) }}" method="post">
                                                     @csrf
-                                                    @method('delete')
+                                                    @method('delete') --}}
                                                     <a href="{{ route('pegawai.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
@@ -59,10 +59,10 @@
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
                                                     </a> |
-
+{{-- 
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
                                                         onclick="return confirm('Apakah Anda Yakin?')">Delete
-                                                    </button>
+                                                    </button> --}}
                                                 </form>
                                             </td>
                                         </tr>

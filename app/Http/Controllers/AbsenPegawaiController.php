@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbsenPegawai;
-use Illuminate\Http\Request;
 use DateTime;
 use DateTimeZone;
+use Illuminate\Http\Request;
 
 class AbsenPegawaiController extends Controller
 {
@@ -21,6 +21,7 @@ class AbsenPegawaiController extends Controller
     public function index()
     {
         return view('absenpegawai.masuk');
+        
     }
 
     public function indexkeluar()
@@ -33,7 +34,7 @@ class AbsenPegawaiController extends Controller
     //     $user_id = Auth::user()->id;
     //     $date = date("Y-m-d");
     //     $time = date("H:i:s");
-        
+
     //     $absen = new Absen;
     //     if (isset($request->btnIn)) {
     //         $absen->create([
@@ -43,7 +44,7 @@ class AbsenPegawaiController extends Controller
     //         ]);
     //         return "absen masuk";
     //     } else if (isset($request->btnOut)) {
-            
+
     //     }
     //     return $request->all();
     // }
@@ -71,23 +72,23 @@ class AbsenPegawaiController extends Controller
         $date = $datetime->format("Y-m-d");
         $localtime = $datetime->format("H:i:s");
 
-        $absenpegawai = AbsenPegawai::where ([
+        $absenpegawai = AbsenPegawai::where([
             ['user_id', '=', auth()->user()->id],
             ['date', '=', $date],
         ])->first();
 
         if ($absenpegawai) {
             return redirect()->route('absenpegawai')
-            ->with('error', 'Data presensi sudah ada!');
+                ->with('error', 'Data Absen sudah ada !');
         } else {
             AbsenPegawai::create([
                 'user_id' => auth()->user()->id,
                 'date' => $date,
-                'time_in' => $localtime
+                'time_in' => $localtime,
             ]);
         }
         return redirect()->route('absenpegawai')
-            ->with('success', 'Anda berhasil presensi masuk!');
+            ->with('success', 'Absen Berhasil !');
     }
 
     public function absenkeluar(Request $request)
@@ -97,23 +98,23 @@ class AbsenPegawaiController extends Controller
         $date = $datetime->format("Y-m-d");
         $localtime = $datetime->format("H:i:s");
 
-        $absenpegawai = AbsenPegawai::where ([
+        $absenpegawai = AbsenPegawai::where([
             ['user_id', '=', auth()->user()->id],
             ['date', '=', $date],
         ])->first();
 
         $dt = [
-            'time_out' => $localtime
+            'time_out' => $localtime,
         ];
 
         if ($absenpegawai->time_out == "") {
             $absenpegawai->update($dt);
             return redirect()->route('absen-pegawai')
-            ->with('success', 'Anda berhasil presensi keluar!');
+                ->with('success', 'Data Absen Sudah Ada !');
         } else {
             return redirect()->route('absen-pegawai')
-            ->with('error', 'Data presensi sudah ada!');
-        }  
+                ->with('error', 'Absen Berhasil !');
+        }
     }
 
     /**
@@ -135,7 +136,7 @@ class AbsenPegawaiController extends Controller
      */
     public function edit(AbsenPegawai $absenPegawai)
     {
-        //
+
     }
 
     /**
@@ -147,7 +148,27 @@ class AbsenPegawaiController extends Controller
      */
     public function update(Request $request, AbsenPegawai $absenPegawai)
     {
-        //
+        $validated = $request->validate([
+            'id_pegawai' => 'required',
+            'id_jabatan' => 'required',
+            'tanggal' => 'required',
+            'jam_masuk' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+        ]);
+        $absensi = Absensi::findOrFail($id);
+
+        $absensi->id_pegawai = $request->id_pegawai;
+        $absensi->id_jabatan = $request->id_jabatan;
+        $absensi->tanggal = $request->tanggal;
+        $absensi->jam_masuk = $request->jam_masuk;
+        $absensi->status = $request->status;
+        $absensi->keterangan = $request->keterangan;
+
+        $absensi->save();
+        return redirect()->route('absensi.index')
+            ->with('success', 'Data berhasil diedit!');
+
     }
 
     /**
@@ -158,6 +179,11 @@ class AbsenPegawaiController extends Controller
      */
     public function destroy(AbsenPegawai $absenPegawai)
     {
-        //
+        $absenpegawai = AbsenPegawai::findOrFail($id);
+        $absenpegawai->delete();
+        return redirect()->route('absensi.index')
+            ->with('success', 'Data berhasil hapus!');
+
     }
+
 }
